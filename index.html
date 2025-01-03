@@ -4,118 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashish Guleria's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         :root {
             --bg-color: #000000;
             --text-color: #ffffff;
-            --muted-color: #a0a0a0;
-            --accent-color: #3b82f6;
-            --border-color: #333333;
+            --accent-color: #ff3333;
+            --border-color: #ffffff;
+            --grey-color: #666666;
+            --light-grey: #333333;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Space Mono', monospace;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
             margin: 0;
             padding: 20px;
+            cursor: default;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            border: 4px solid var(--border-color);
+            padding: 2rem;
+            position: relative;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 2rem;
+            text-align: left;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 4px solid var(--border-color);
+            position: relative;
+            background-color: var(--light-grey);
+        }
+
+        header::after {
+            content: ">";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--accent-color);
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Space Mono', monospace;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            margin: 0;
             font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0.5rem;
+            left: -0.5rem;
+            width: 100%;
+            height: 0.5rem;
+            background-color: var(--accent-color);
+            z-index: -1;
         }
 
         h2 {
-            font-size: 1.75rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin: 0 0 1.5rem 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::before {
+            content: "//";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
         }
 
         p {
             margin-bottom: 1rem;
-            font-weight: 300;
+            font-size: 1rem;
         }
 
         .subtitle {
-            font-size: 1.25rem;
-            color: var(--muted-color);
+            font-size: 1.5rem;
+            color: var(--grey-color);
             font-weight: 400;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
             margin: 2rem 0;
         }
 
         .social-links a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            height: 80px;
+            background-color: var(--light-grey);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.1s;
+            border: 4px solid var(--border-color);
+            position: relative;
         }
 
         .social-links a:hover {
             background-color: var(--accent-color);
-            transform: translateY(-5px);
+            color: var(--text-color);
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0 var(--border-color);
         }
 
         .social-links i {
-            font-size: 28px;
-            color: var(--text-color);
-        }
-
-        .social-links a:hover i {
-            color: #000;
+            font-size: 2rem;
         }
 
         .card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s;
+            border: 4px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            background-color: var(--light-grey);
+            transition: transform 0.1s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateX(10px);
+            background-color: var(--grey-color);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--accent-color);
         }
 
         ul {
-            padding-left: 1.5rem;
-            font-weight: 300;
+            padding-left: 0;
+            list-style-type: none;
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "█";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
         strong {
-            font-weight: 600;
+            color: var(--text-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: var(--accent-color);
+            padding: 0 0.3rem;
         }
 
         @media (max-width: 600px) {
@@ -123,17 +196,64 @@
                 padding: 10px;
             }
 
+            .container {
+                padding: 1rem;
+            }
+
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             h2 {
                 font-size: 1.5rem;
             }
+
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Brutalist selection style */
+        ::selection {
+            background: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        /* Brutalist scroll bar */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+            border-left: 4px solid var(--border-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border: 2px solid var(--bg-color);
+        }
+
+        /* Add noise texture */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body>
+    <!-- Rest of the HTML content remains the same -->
     <div class="container">
         <header>
             <h1>Ashish Guleria</h1>
@@ -141,22 +261,15 @@
         </header>
 
         <nav class="social-links">
-            <!-- GitHub Icon -->
             <a href="https://github.com/ashishguleria04" target="_blank" rel="noopener noreferrer">
                 <i class="fa fa-github"></i>
             </a>
-
-            <!-- LinkedIn Icon -->
             <a href="https://www.linkedin.com/in/ashish-guleria-485473203/" target="_blank" rel="noopener noreferrer">
                 <i class="fa fa-linkedin"></i>
             </a>
-
-            <!-- Twitter Icon -->
             <a href="https://x.com/ashishguleria_" target="_blank" rel="noopener noreferrer">
                 <i class="fa fa-twitter"></i>
             </a>
-
-            <!-- Resume Icon -->
             <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener noreferrer">
                 <i class="fa fa-file-pdf-o"></i>
             </a>
