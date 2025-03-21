@@ -4,475 +4,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashish Guleria's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --accent-color: #ff3333;
-            --border-color: #ffffff;
-            --grey-color: #666666;
-            --light-grey: #333333;
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Space Mono', monospace;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-            cursor: default;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 900px;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.8;
+            padding: 50px 30px;
+            max-width: 850px;
             margin: 0 auto;
-            border: 4px solid var(--border-color);
-            padding: 2rem;
-            position: relative;
-            animation: fadeIn 1s ease-out;
-            background: linear-gradient(to bottom, rgba(51, 51, 51, 0.1), transparent);
         }
 
-        header {
-            text-align: left;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            border: 4px solid var(--border-color);
-            position: relative;
-            background-color: var(--light-grey);
-            animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1);
-            transition: transform 0.3s ease;
-        }
-
-        header:hover {
-            transform: scale(1.01);
-        }
-
-        header::after {
-            content: ">";
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: var(--accent-color);
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: 'Space Mono', monospace;
-            animation: blink 1s step-end infinite;
-        }
-
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem;
-            margin: 0;
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1;
-            color: var(--text-color);
-            position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        h1:hover {
-            transform: skew(-5deg);
-        }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: 0.5rem;
-            left: -0.5rem;
-            width: 0;
-            height: 0.5rem;
-            background-color: var(--accent-color);
-            z-index: -1;
-            animation: underlineExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.5s;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--grey-color);
-            font-weight: 400;
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out forwards;
-            animation-delay: 0.8s;
-            transition: letter-spacing 0.3s ease;
-        }
-
-        .subtitle:hover {
-            letter-spacing: 0.2em;
-        }
-
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            background-color: var(--light-grey);
-            color: var(--text-color);
+        a {
+            color: #ffffff;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 4px solid var(--border-color);
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            overflow: hidden;
         }
 
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: 0.5s;
+        a:hover {
+            text-decoration: underline;
         }
 
-        .social-links a:hover::before {
-            left: 100%;
-        }
-
-        .social-links a:nth-child(1) { animation-delay: 0.1s; }
-        .social-links a:nth-child(2) { animation-delay: 0.2s; }
-        .social-links a:nth-child(3) { animation-delay: 0.3s; }
-        .social-links a:nth-child(4) { animation-delay: 0.4s; }
-
-        .social-links a:hover {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            transform: translate(-4px, -4px);
-            box-shadow: 4px 4px 0 var(--border-color);
-        }
-
-        .social-links i {
-            font-size: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover i {
-            transform: scale(1.2);
-        }
-
-        .card {
-            border: 4px solid var(--border-color);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            background-color: var(--light-grey);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                transparent,
-                rgba(255, 51, 51, 0.1),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .card:hover::before {
-            top: 100%;
-        }
-
-        .card:nth-child(odd) { animation-delay: 0.2s; }
-        .card:nth-child(even) { animation-delay: 0.4s; }
-
-        .card:hover {
-            transform: translateX(10px);
-            background-color: var(--grey-color);
-        }
-
-        .card::after {
-            content: "";
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--accent-color);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card:hover::after {
-            transform: rotate(90deg) scale(1.2);
+        /* Typography */
+        h1 {
+            font-size: 3rem; /* Slightly smaller */
+            font-weight: 700;
+            margin-bottom: 0.6rem;
         }
 
         h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            margin: 0 0 1.5rem 0;
+            font-size: 1.8rem; /* Slightly smaller */
             font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-color);
-            position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
+            margin: 2.5rem 0 1.3rem 0;
+            text-transform: lowercase;
         }
 
-        h2:hover {
-            transform: translateX(10px);
-        }
-
-        h2::before {
-            content: "//";
-            color: var(--accent-color);
-            margin-right: 0.5rem;
-            opacity: 0;
-            animation: fadeIn 0.3s ease-out forwards;
-            animation-delay: 0.5s;
-            transition: color 0.3s ease;
-        }
-
-        h2:hover::before {
-            color: var(--text-color);
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
         }
 
         ul {
-            padding-left: 0;
             list-style-type: none;
+            margin-bottom: 2.5rem;
         }
 
         li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
             position: relative;
-            opacity: 0;
-            animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: transform 0.3s ease;
         }
-
-        li:hover {
-            transform: translateX(5px);
-        }
-
-        li:nth-child(odd) { animation-delay: 0.3s; }
-        li:nth-child(even) { animation-delay: 0.5s; }
 
         li::before {
-            content: "█";
-            color: var(--accent-color);
+            content: "•";
             position: absolute;
             left: 0;
-            font-weight: bold;
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
         }
 
-        li:hover::before {
-            transform: scale(1.2);
+        /* Layout */
+        .container {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
         }
 
-        strong {
-            color: var(--text-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            background-color: var(--accent-color);
-            padding: 0 0.3rem;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ffffff;
+            font-size: 1.1rem;
         }
 
-        strong:hover {
-            transform: skew(-10deg);
-            background-color: var(--text-color);
-            color: var(--accent-color);
+        /* Specific Styles */
+        .name {
+            text-decoration: underline;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .section-title {
+            margin-top: 3rem;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2.5rem 0;
+            font-size: 1.2rem;
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        @keyframes underlineExpand {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
+        /* Responsive */
         @media (max-width: 600px) {
-            body { padding: 10px; }
-            .container { padding: 1rem; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.5rem; }
-            .social-links { grid-template-columns: repeat(2, 1fr); }
-            .card { padding: 1.5rem; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+            body {
+                padding: 25px 15px;
             }
-        }
 
-        ::selection {
-            background: var(--accent-color);
-            color: var(--text-color);
-        }
+            h1 {
+                font-size: 2.3rem;
+            }
 
-        ::-webkit-scrollbar {
-            width: 15px;
-        }
+            h2 {
+                font-size: 1.6rem;
+            }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-            border-left: 4px solid var(--border-color);
-        }
+            p, li, .social-links {
+                font-size: 1rem;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border: 2px solid var(--bg-color);
+            .footer {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Ashish Guleria</h1>
-            <p class="subtitle">CS Undergraduate</p>
-        </header>
+    <header>
+        <h1>hi, i am <span class="name">Ashish Guleria</span>!</h1>
+        <p>CS Undergraduate</p>
+    </header>
 
-        <nav class="social-links">
-            <a href="https://github.com/ashishguleria04" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/ashish-guleria-485473203/" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-linkedin"></i>
-            </a>
-            <a href="https://x.com/ashishguleria_" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-twitter"></i>
-            </a>
-            <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-file-pdf-o"></i>
-            </a>
-        </nav>
-
-        <main>
-            <section class="card">
-                <h2>About Me</h2>
-                <p>Hello! I'm Ashish Guleria, a 20-year-old tech enthusiast currently in my 3rd year of pursuing a BTech in Robotics and AI. My journey in the world of technology is driven by a relentless curiosity and a passion for innovation.</p>
-            </section>
-
-            <section class="card">
-                <h2>My Interests</h2>
-                <ul>
-                    <li><strong>Web Development:</strong> Creating dynamic and responsive web applications.</li>
-                    <li><strong>Data Science:</strong> Planning to explore this fascinating field soon.</li>
-                    <li><strong>Artificial Intelligence:</strong> Amazed by its endless possibilities and applications.</li>
-                    <li><strong>Web3:</strong> Excited about the future of decentralized technologies.</li>
-                    <li><strong>Cybersecurity:</strong> Eager to contribute to making the digital world safer.</li>
-                </ul>
-            </section>
-
-            <section class="card">
-        <h2>Skills and Learning</h2>
-        <ul>
-            <li><strong>Web Development:</strong> HTML, CSS, JavaScript, Tailwind, React, Next.js, TypeScript</li>
-            <li><strong>Machine Learning:</strong> Python, TensorFlow, OpenCV, PyTorch, Pandas</li>
-            <li><strong>Data Structures & Algorithms:</strong> C++</li>
-            <li>Future plans include diving deep into <strong>Data Science</strong>, <strong>Web3</strong>, and <strong>Cybersecurity</strong>.</li>
-        </ul>
-    </section>
-
-            <section class="card">
-                <h2>Personal Traits</h2>
-                <p>I am a passionate and hardworking individual, always striving to learn and improve. I believe in the power of continuous learning and exploration, especially in the ever-evolving field of technology.</p>
-            </section>
-
-            <section class="card">
-                <h2>Non-Tech Interests</h2>
-                <ul>
-                    <li><strong>Reading:</strong> Books, articles, and research papers.</li>
-                    <li><strong>Music and Anime:</strong> Sources of relaxation and inspiration.</li>
-                    <li><strong>Public Speaking and Debating:</strong> Engaging in thoughtful discussions.</li>
-                    <li><strong>Philosophy and Spirituality:</strong> Pondering deeper questions of life.</li>
-                </ul>
-            </section>
-
-            <section class="card">
-                <h2>Looking for Opportunities</h2>
-                <p>I'm actively seeking internship opportunities in software development. If my profile interests you, please feel free to reach out. You can connect with me through the links provided above, and my resume is also available for more details.</p>
-                <p>Thank you for visiting my portfolio!</p>
-            </section>
-
-            <section class="card">
-                <h2>Projects</h2>
-                <p style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-weight: bold;">Coming Soon</p>
-            </section>
-        </main>
+    <div class="social-links">
+        <a href="https://github.com/ashishguleria04" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/ashish-guleria-485473203/" target="_blank">linkedin</a>
+        <a href="https://x.com/ashishguleria_" target="_blank">twitter</a>
+        <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank">resume</a>
     </div>
+
+    <main>
+        <section>
+            <h2 class="section-title">about me</h2>
+            <p>Hello! I'm Ashish Guleria, a 20-year-old tech enthusiast currently in my 3rd year of pursuing a BTech in Robotics and AI. My journey in the world of technology is driven by a relentless curiosity and a passion for innovation.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">my interests</h2>
+            <p>I am deeply interested in web development, building dynamic and responsive web applications. I am also fascinated by artificial intelligence and its endless possibilities. Cybersecurity is another domain that excites me as I aim to contribute to making the digital world safer. Additionally, I plan to explore data science soon, and I am highly optimistic about the future of Web3 and decentralized technologies.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">skills and learning</h2>
+            <ul>
+                <li>Web Development: HTML, CSS, JavaScript, Tailwind, React, Next.js, TypeScript</li>
+                <li>Machine Learning: Python, TensorFlow, OpenCV, PyTorch, Pandas</li>
+                <li>Data Structures & Algorithms: C++</li>
+                <li>Future plans include diving deep into Data Science, Web3, and Cybersecurity</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="section-title">personal traits</h2>
+            <p>I am a passionate and hardworking individual, always striving to learn and improve. I believe in the power of continuous learning and exploration, especially in the ever-evolving field of technology.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">non-tech interests</h2>
+            <ul>
+                <li>Reading: Books, articles, and research papers</li>
+                <li>Music and Anime: Sources of relaxation and inspiration</li>
+                <li>Public Speaking and Debating: Engaging in thoughtful discussions</li>
+                <li>Philosophy and Spirituality: Pondering deeper questions of life</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="section-title">looking for opportunities</h2>
+            <p>I'm actively seeking internship opportunities in software development. If my profile interests you, please feel free to reach out. You can connect with me through the links provided above, and my resume is also available for more details.</p>
+            <p>Thank you for visiting my portfolio!</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">projects</h2>
+            <p style="text-transform: uppercase; letter-spacing: 0.2em;">Coming Soon</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="https://github.com/ashishguleria04" target="_blank">github</a> |
+        <a href="https://x.com/ashishguleria_" target="_blank">twitter</a>
+    </footer>
 </body>
 </html>
